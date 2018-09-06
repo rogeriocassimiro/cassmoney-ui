@@ -34,31 +34,31 @@
     <div class="ui-g">
 
         <div class="ui-g-12">
-            <p-table [value]="lancamentos">
-                
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Descrição</th>
-                        <th>Data vencimento</th>
-                        <th>Data pagamento</th>
-                        <th>Valor</th>
-                        <th>Pessoa</th>                        
-                    </tr>
-                </ng-template> 
+            <p-dataTable [value]="lancamentos">
+                <p-column field="pessoa" header="Pessoa"></p-column>
+                <p-column field="descricao" header="Descrição"></p-column>
+                <p-column field="dataVencimento" header="Vencimento" styleClass="col-data"></p-column>
+                <p-column field="dataPagamento" header="Pagamento" styleClass="col-data"></p-column>
+                <p-column field="valor" header="Valor" styleClass="col-valor">
+                    <ng-template let-lanc="rowData" pTemplate="body">
+                        <span 
+                            [style.color]="lanc.tipo === 'DESPESA' ? 'red' : 'blue'">
+                                {{lanc.valor}}
+                        </span>
+                    </ng-template>
+                </p-column>
+                <p-column styleClass="col-acoes">
+                    <ng-template pTemplate="body">
+                        <button pButton icon="fa fa-pencil"></button>
+                        <button pButton icon="fa fa-trash"></button>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+            
+        </div>
 
-                <ng-template pTemplate="body" let-lancamento>
-                    <tr>
-                        <td>{{lancamento.tipo}}</td>
-                        <td>{{lancamento.descricao}}</td>
-                        <td class="col-data">{{lancamento.dataVencimento}}</td>
-                        <td class="col-data">{{lancamento.dataPagamento}}</td>
-                        <td class="col-valor">{{lancamento.valor}}</td>
-                        <td>{{lancamento.pessoa}}</td>
-                    </tr>
-                </ng-template>
-
-            </p-table>
+        <div class="ui-g-12">
+            <a pButton label="Novo lançamento"></a>
         </div>
 
     </div>
