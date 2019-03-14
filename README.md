@@ -4,6 +4,16 @@ Projeto UI Angular 6 para consumir API Java hospedada no Heroku.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
+Instalações extras:
+npm install primeng --save
+npm install font-awesome --save
+
+Adicionar no angular.json no objeto "styles":
+    "node_modules/primeicons/primeicons.css",
+    "node_modules/primeng/resources/themes/nova-light/theme.css",
+    "node_modules/primeng/resources/primeng.min.css",
+    "node_modules/font-awesome/css/font-awesome.min.css",
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
